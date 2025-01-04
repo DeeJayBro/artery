@@ -145,6 +145,15 @@ if(TARGET lte)
     target_link_libraries(artery INTERFACE lte)
 endif()
 
+find_package(PCAP)
+if(PCAP_FOUND)
+    message(STATUS "Enable pcap recording")
+    set_property(TARGET core APPEND PROPERTY SOURCES
+        networking/PcapItsRecorder.cc
+    )
+    target_link_libraries(core PUBLIC ${PCAP_LIBRARY})
+endif()
+
 macro(add_artery_feature name)
     add_library(${name} SHARED ${ARGN})
     add_library(Artery::${name} ALIAS ${name})

@@ -66,6 +66,8 @@ module Car like INetworkNode
                 runtime.datetime = middleware.datetime;
         }
 
+        pcapRecorder: artery.networking.PcapItsRecorder {}
+
         mobility: <default("artery.inet.VehicleMobility")> like IMobility {
             parameters:
                 @display("p=50,200");
