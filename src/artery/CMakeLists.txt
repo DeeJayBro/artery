@@ -173,6 +173,9 @@ if(WITH_TESTBED)
     add_subdirectory(testbed)
 endif()
 
+add_subdirectory(application/misbehavior)
+target_link_libraries(misbehavior PUBLIC envmod)
+
 install(TARGETS core LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
 set_property(TARGET core APPEND PROPERTY INSTALL_NED_FOLDERS ${CMAKE_INSTALL_DATADIR}/ned/artery)
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/ DESTINATION share/ned/artery FILES_MATCHING PATTERN "*.ned")
