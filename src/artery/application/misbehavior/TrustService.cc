@@ -41,7 +41,7 @@ void TrustService::receiveSignal(omnetpp::cComponent*, omnetpp::simsignal_t sign
                 auto *ca = dynamic_cast<CaObject *>(obj);
                 const auto& cam = ca->asn1();
 
-                const auto& trackedObj = mEnvironmentModel->allObjects();
+                const auto& trackedObj = filterBySensorCategory(mEnvironmentModel->allObjects(), "Radar");
                 for (const auto &i : trackedObj)
                 {
                     const auto obj_ptr = i.first.lock();
