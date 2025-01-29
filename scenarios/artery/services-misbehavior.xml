@@ -6,4 +6,10 @@
 	<service type="artery.application.misbehavior.TrustService">
 		<listener port="4712" />
 	</service>
+	<service type="artery.application.misbehavior.attack.MisbehaviorCaService" name="AttackerCA">
+		<listener port="4713" />
+		<filters>
+			<penetration rate="0.1" />
+		</filters>
+	</service>
 </services>
