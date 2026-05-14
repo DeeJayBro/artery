@@ -64,9 +64,13 @@ if(WITH_INET)
         COMMENT "Generate INET opp_defines.h"
     )
     
+    add_custom_target(INET_codegen
+        DEPENDS ${INET_GEN_DIR}/inet/features.h ${INET_GEN_DIR}/inet/opp_defines.h)
+    artery_mark_as_codegen(INET_codegen)
+
     add_opp_target(
         TARGET INET ROOT_DIR ${INET_DIR}
-        DEPENDS ${INET_GEN_DIR}/inet/features.h ${INET_GEN_DIR}/inet/opp_defines.h
+        DEPENDS INET_codegen
         OPP_MAKEMAKE ${INET_OPP_MAKEMAKE}
     )
 endif()
